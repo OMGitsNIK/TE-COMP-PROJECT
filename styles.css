@@ -4,6 +4,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    /* Remove default body margin */
 }
 
 header {
@@ -12,9 +14,31 @@ header {
     text-align: center;
     padding: 20px;
 }
+
+nav {
+    background-color: #004f80;
+    /* Darker background color for the navbar */
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
 nav ul li {
     display: inline;
     margin-right: 20px;
+    border-right: 1px solid #fff;
+    padding-right: 10px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+    border-right: none;
+    padding-right: 0;
 }
 
 nav a {
@@ -41,29 +65,17 @@ h2 {
     color: #007acc;
 }
 
-#navbar {
-    padding-top: 2rem;
-}
-
-.navbar {
-    padding-top: 2rem;
-}
-
-/* nav {
-    padding-top: 2rem;
-} */
-
 .center {
     margin-left: auto;
     margin-right: auto;
 }
 
-footer {
+/* footer {
     align-self: center;
     margin-top: auto;
     position: sticky;
-}
+} */
 
-#table{
+#table {
     width: 1000px;
 }
