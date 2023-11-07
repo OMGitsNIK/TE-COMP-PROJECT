@@ -18,7 +18,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -52,27 +52,19 @@
             </li>
 
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-
-            </div>
-
-           
-                    
 
             <!-- Nav Item - Tables -->
+            
             <li class="nav-item ">
-                <a class="nav-link" href="facultyinfo.html">
+                <a class="nav-link active" href="culturalAct.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Cultural Activities</span></a>
+            </li>
+           
+            <li class="nav-item ">
+                <a class="nav-link" href="researchPaper2.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Research Paper Publication</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="industrialVisit.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Industrial Visit</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -308,9 +300,10 @@
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                         </div> -->
                         <div class="card-body">
+                            <a class="btn btn-primary" href="update/industrial.html">Update</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <tr>
+                                   <tr>
                                         <th>Auth_ID</th>
                                         <th>Date</th>
                                         <th>Industry</th>
@@ -320,13 +313,13 @@
                                     </tr>
                                     <?php
                                         $conn = mysqli_connect("localhost","root","","dmqp_db");
-                                        $sql= "SELECT * FROM cultural_activities";
+                                        $sql= "SELECT * FROM industrial_visit";
                                          $result=$conn->query ($sql);
                                          while($row=$result->fetch_assoc())
                                         {
                                         echo "<tr class='data-row'>";
                                         echo "<td>".$row["Auth_ID"]."</td>";
-                                              echo "<td>".$row["Date"]."</td>";
+                                        echo "<td>".$row["Date"]."</td>";
                                         echo "<td>".$row["Industry"]."</td>";
                                         echo"<td>".$row["ID"]."</td>";
                                         echo"<td>".$row["Roll_No"]."</td>";
@@ -335,6 +328,9 @@
                                           echo "</tr>";
                                           }
                                                                         ?>
+
+
+
 
                                 </table>
                             </div>

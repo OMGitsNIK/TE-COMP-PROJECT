@@ -54,13 +54,9 @@
 
 
             <!-- Nav Item - Tables -->
+            
             <li class="nav-item ">
-                <a class="nav-link" href="studentsinfo.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Sports</span></a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link active" href="culturalAct.html">
+                <a class="nav-link active" href="culturalAct.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Cultural Activities</span></a>
             </li>
@@ -308,6 +304,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                         </div> -->
                         <div class="card-body">
+                            <a class="btn btn-primary" href="update/cultural.html">Update</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <tr >
