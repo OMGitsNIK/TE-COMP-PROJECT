@@ -18,7 +18,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -52,25 +52,27 @@
             </li>
 
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-
-            </div>
-
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
-                <a class="nav-link" href="facultyinfo.html">
+            <li class="nav-item ">
+                <a class="nav-link" href="studentsinfo.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Research Paper Publication</span></a>
+                    <span>Sports</span></a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="industrialVisit.html">
+                <a class="nav-link active" href="culturalAct.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Cultural Activities</span></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="industrialVisit2.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Industrial Visit</span></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="researchPaper2.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Research Paper Publication</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -125,12 +127,11 @@
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
-                                <form
-                                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
                                         <input type="text" class="form-control bg-light border-0 small"
                                             placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2" id="searchInput">
+                                            aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -138,7 +139,6 @@
                                         </div>
                                     </div>
                                 </form>
-
                             </div>
                         </li>
 
@@ -296,6 +296,12 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    <!-- Page Heading -->
+                    <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                        For more information about DataTables, please visit the <a target="_blank"
+                            href="https://datatables.net">official DataTables documentation</a>.</p> -->
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <!-- <div class="card-header py-3">
@@ -304,6 +310,31 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <tr >
+                                        <th>Academic_year</th> <th>Type_of_event</th> <th>Level_of_event</th> <th>Date</th> <th>Organized_by</th> <th>No_of_students</th> <th>Prizes_won</th> <th>Roll_No</th> <th>activity_type</th>
+                                    </tr>
+                                    <?php
+                                    $conn = mysqli_connect("localhost","root","","dmqp_db");
+                                    $sql= "SELECT * FROM cultural_activities";
+                                    $result=$conn->query ($sql);
+                                    while($row=$result->fetch_assoc())
+                                    {
+                                        echo "<tr class='data-row'>";
+                                            echo "<td>".$row["Academic_year"]."</td>";
+                                            echo "<td>".$row["Type_of_event"]."</td>";
+                                            echo "<td>".$row["Level_of_event"]."</td>";
+                                            echo "<td>".$row["Date"]."</td>";
+                                            echo "<td>".$row["Organized_by"]."</td>";
+                                            echo "<td>".$row["No_of_students"]."</td>";
+                                            echo "<td>".$row["Prizes_won"]."</td>";
+                                            echo "<td>".$row["Roll_No"]."</td>";
+                                            echo "<td>".$row["activity_type"]."</td>";
+
+                                        echo "</tr>";
+                                    }
+                                    ?>
+
+
 
                                 </table>
                             </div>
@@ -356,43 +387,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Function to filter and display rows in the table based on the search input
-        function filterTable() {
-            var input = document.getElementById("searchInput");
-            var filter = input.value.toUpperCase();
-            var table = document.getElementById("dataTable");
-            var rows = table.getElementsByTagName("tr");
-
-            for (var i = 1; i < rows.length; i++) {
-                var row = rows[i];
-                var cells = row.getElementsByTagName("td");
-                var shouldDisplay = false;
-
-                for (var j = 0; j < cells.length; j++) {
-                    var cell = cells[j];
-                    if (cell) {
-                        var text = cell.textContent || cell.innerText;
-                        if (text.toUpperCase().indexOf(filter) > -1) {
-                            shouldDisplay = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (shouldDisplay) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-            }
-        }
-
-        // Attach an event listener to the search input field
-        var searchInput = document.getElementById("searchInput");
-        searchInput.addEventListener("keyup", filterTable);
-    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
