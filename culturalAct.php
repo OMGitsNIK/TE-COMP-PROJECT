@@ -54,19 +54,24 @@
 
 
             <!-- Nav Item - Tables -->
-            
+
+            <li class="nav-item  ">
+                <a class="nav-link" href="studentsinfo.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Sports</span></a>
+            </li>
             <li class="nav-item ">
-                <a class="nav-link active" href="culturalAct.php">
+                <a class="nav-link" href="industrialVisit2.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Industrial Visit</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="culturalAct.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Cultural Activities</span></a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="industrialVisit2.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Industrial Visit</span></a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="researchPaper2.html">
+                <a class="nav-link" href="researchPaper2.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Research Paper Publication</span></a>
             </li>
@@ -307,25 +312,32 @@
                             <a class="btn btn-primary" href="update/cultural.html">Update</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <tr >
-                                        <th>Academic_year</th> <th>Type_of_event</th> <th>Level_of_event</th> <th>Date</th> <th>Organized_by</th> <th>No_of_students</th> <th>Prizes_won</th> <th>Roll_No</th> <th>activity_type</th>
+                                    <tr>
+                                        <th>Academic_year</th>
+                                        <th>Type_of_event</th>
+                                        <th>Level_of_event</th>
+                                        <th>Date</th>
+                                        <th>Organized_by</th>
+                                        <th>No_of_students</th>
+                                        <th>Prizes_won</th>
+                                        <th>Roll_No</th>
+                                        <th>activity_type</th>
                                     </tr>
                                     <?php
-                                    $conn = mysqli_connect("localhost","root","","dmqp_db");
-                                    $sql= "SELECT * FROM cultural_activities";
-                                    $result=$conn->query ($sql);
-                                    while($row=$result->fetch_assoc())
-                                    {
+                                    $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
+                                    $sql = "SELECT * FROM cultural_activities";
+                                    $result = $conn->query($sql);
+                                    while ($row = $result->fetch_assoc()) {
                                         echo "<tr class='data-row'>";
-                                            echo "<td>".$row["Academic_year"]."</td>";
-                                            echo "<td>".$row["Type_of_event"]."</td>";
-                                            echo "<td>".$row["Level_of_event"]."</td>";
-                                            echo "<td>".$row["Date"]."</td>";
-                                            echo "<td>".$row["Organized_by"]."</td>";
-                                            echo "<td>".$row["No_of_students"]."</td>";
-                                            echo "<td>".$row["Prizes_won"]."</td>";
-                                            echo "<td>".$row["Roll_No"]."</td>";
-                                            echo "<td>".$row["activity_type"]."</td>";
+                                        echo "<td>" . $row["Academic_year"] . "</td>";
+                                        echo "<td>" . $row["Type_of_event"] . "</td>";
+                                        echo "<td>" . $row["Level_of_event"] . "</td>";
+                                        echo "<td>" . $row["Date"] . "</td>";
+                                        echo "<td>" . $row["Organized_by"] . "</td>";
+                                        echo "<td>" . $row["No_of_students"] . "</td>";
+                                        echo "<td>" . $row["Prizes_won"] . "</td>";
+                                        echo "<td>" . $row["Roll_No"] . "</td>";
+                                        echo "<td>" . $row["activity_type"] . "</td>";
 
                                         echo "</tr>";
                                     }

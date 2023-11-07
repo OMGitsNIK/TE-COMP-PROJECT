@@ -54,13 +54,23 @@
 
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item ">
+            <li class="nav-item  ">
                 <a class="nav-link" href="industrialVisit.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Sports</span></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="industrialVisit2.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Industrial Visit</span></a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="researchPaper.html">
+                <a class="nav-link" href="culturalAct.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Cultural Activities</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="researchPaper2.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Research Paper Publication</span></a>
             </li>
@@ -285,7 +295,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
+
                     <!-- Page Heading -->
                     <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
@@ -302,35 +312,34 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <tr>
-                                            <th>DOI</th>
-                                            <th>ID</th>
-                                            <th>Roll No</th>
-                                            <th>Title</th>
-                                            <th>Journal name</th>
-                                            <th>Volume</th>
-                                            <th>Series</th>
-                                            <th>Year</th>
-                                            <th>Domain</th>
-                                            <th>Activity Type</th>
-                                            <!-- Add more header columns as needed -->
-                                        </tr>
+                                        <th>DOI</th>
+                                        <th>ID</th>
+                                        <th>Roll No</th>
+                                        <th>Title</th>
+                                        <th>Journal name</th>
+                                        <th>Volume</th>
+                                        <th>Series</th>
+                                        <th>Year</th>
+                                        <th>Domain</th>
+                                        <th>Activity Type</th>
+                                        <!-- Add more header columns as needed -->
+                                    </tr>
                                     <?php
-                                    $conn = mysqli_connect("localhost","root","","dmqp_db");
-                                    $sql= "SELECT * FROM research_paper_publication";
-                                    $result=$conn->query ($sql);
-                                    while($row=$result->fetch_assoc())
-                                    {
+                                    $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
+                                    $sql = "SELECT * FROM research_paper_publication";
+                                    $result = $conn->query($sql);
+                                    while ($row = $result->fetch_assoc()) {
                                         echo "<tr class='data-row'>";
-                                            echo "<td>".$row["DOI"]."</td>";
-                                            echo "<td>".$row["ID"]."</td>";
-                                            echo "<td>".$row["Roll_No"]."</td>";
-                                            echo "<td>".$row["Title"]."</td>";
-                                            echo "<td>".$row["Journal name"]."</td>";
-                                            echo "<td>".$row["Volume"]."</td>";
-                                            echo "<td>".$row["Series"]."</td>";
-                                            echo "<td>".$row["Year"]."</td>";
-                                            echo "<td>".$row["Domain"]."</td>";
-                                            echo "<td>".$row["activity_type"]."</td>";
+                                        echo "<td>" . $row["DOI"] . "</td>";
+                                        echo "<td>" . $row["ID"] . "</td>";
+                                        echo "<td>" . $row["Roll_No"] . "</td>";
+                                        echo "<td>" . $row["Title"] . "</td>";
+                                        echo "<td>" . $row["Journal name"] . "</td>";
+                                        echo "<td>" . $row["Volume"] . "</td>";
+                                        echo "<td>" . $row["Series"] . "</td>";
+                                        echo "<td>" . $row["Year"] . "</td>";
+                                        echo "<td>" . $row["Domain"] . "</td>";
+                                        echo "<td>" . $row["activity_type"] . "</td>";
 
                                         echo "</tr>";
                                     }

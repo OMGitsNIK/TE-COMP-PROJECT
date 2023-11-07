@@ -54,15 +54,24 @@
 
 
             <!-- Nav Item - Tables -->
-            
+
+            <li class="nav-item  ">
+                <a class="nav-link" href="studentsinfo.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Sports</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="industrialVisit2.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Industrial Visit</span></a>
+            </li>
             <li class="nav-item ">
-                <a class="nav-link active" href="culturalAct.php">
+                <a class="nav-link" href="culturalAct.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Cultural Activities</span></a>
             </li>
-           
             <li class="nav-item ">
-                <a class="nav-link" href="researchPaper2.html">
+                <a class="nav-link" href="researchPaper2.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Research Paper Publication</span></a>
             </li>
@@ -303,7 +312,7 @@
                             <a class="btn btn-primary" href="update/industrial.html">Update</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                   <tr>
+                                    <tr>
                                         <th>Auth_ID</th>
                                         <th>Date</th>
                                         <th>Industry</th>
@@ -312,22 +321,21 @@
                                         <th>activity_type</th>
                                     </tr>
                                     <?php
-                                        $conn = mysqli_connect("localhost","root","","dmqp_db");
-                                        $sql= "SELECT * FROM industrial_visit";
-                                         $result=$conn->query ($sql);
-                                         while($row=$result->fetch_assoc())
-                                        {
+                                    $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
+                                    $sql = "SELECT * FROM industrial_visit";
+                                    $result = $conn->query($sql);
+                                    while ($row = $result->fetch_assoc()) {
                                         echo "<tr class='data-row'>";
-                                        echo "<td>".$row["Auth_ID"]."</td>";
-                                        echo "<td>".$row["Date"]."</td>";
-                                        echo "<td>".$row["Industry"]."</td>";
-                                        echo"<td>".$row["ID"]."</td>";
-                                        echo"<td>".$row["Roll_No"]."</td>";
-                                         echo"<td>".$row["activity_type"]."</td>";
+                                        echo "<td>" . $row["Auth_ID"] . "</td>";
+                                        echo "<td>" . $row["Date"] . "</td>";
+                                        echo "<td>" . $row["Industry"] . "</td>";
+                                        echo "<td>" . $row["ID"] . "</td>";
+                                        echo "<td>" . $row["Roll_No"] . "</td>";
+                                        echo "<td>" . $row["activity_type"] . "</td>";
 
-                                          echo "</tr>";
-                                          }
-                                                                        ?>
+                                        echo "</tr>";
+                                    }
+                                    ?>
 
 
 

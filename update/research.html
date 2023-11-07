@@ -1,33 +1,226 @@
-<form action="insert_data_research.php" method="post">
-    <label for="doi">DOI:</label>
-    <input type="text" id="doi" name="doi" required><br>
+<style>
+    .form {
+        margin: 0 auto;
+        display: block;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #ffffff;
+        padding: 30px;
+        width: 700px;
+        border-radius: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
 
-    <label for="id">ID:</label>
-    <input type="text" id="id" name="id" required><br>
+    .input-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        /* Add some spacing between rows */
+    }
 
-    <label for="roll_no">Roll No:</label>
-    <input type="text" id="roll_no" name="roll_no" required><br>
+    ::placeholder {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
 
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" required><br>
+    .form button {
+        align-self: flex-end;
+    }
 
-    <label for="journal_name">Journal name:</label>
-    <input type="text" id="journal_name" name="journal_name" required><br>
+    .flex-column>label {
+        color: #151717;
+        font-weight: 600;
+    }
 
-    <label for="volume">Volume:</label>
-    <input type="text" id="volume" name="volume" required><br>
+    .inputForm {
+        border: 1.5px solid #ecedec;
+        flex: 1;
+        margin-right: 10px;
+        border-radius: 10px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        transition: 0.2s ease-in-out;
+    }
 
-    <label for="series">Series:</label>
-    <input type="text" id="series" name="series" required><br>
+    .input {
+        margin-left: 10px;
+        border-radius: 10px;
+        border: none;
+        width: 85%;
+        height: 100%;
+    }
 
-    <label for="year">Year:</label>
-    <input type="text" id="year" name="year" required><br>
+    .input:focus {
+        outline: none;
+    }
 
-    <label for="domain">Domain:</label>
-    <input type="text" id="domain" name="domain" required><br>
+    .inputForm:focus-within {
+        border: 1.5px solid #2d79f3;
+    }
 
-    <label for="activity_type">Activity Type:</label>
-    <input type="text" id="activity_type" name="activity_type" required><br>
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        justify-content: space-between;
+    }
 
-    <input type="submit" value="Insert Entry">
-</form>
+    .flex-row>div>label {
+        font-size: 14px;
+        color: black;
+        font-weight: 400;
+    }
+
+    .span {
+        font-size: 14px;
+        margin-left: 5px;
+        color: #2d79f3;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .button-submit {
+        margin: 20px 0 10px 0;
+        background-color: #151717;
+        border: none;
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+        border-radius: 10px;
+        height: 50px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .button-submit:hover {
+        background-color: #252727;
+    }
+
+    .p {
+        text-align: center;
+        color: black;
+        font-size: 14px;
+        margin: 5px 0;
+    }
+
+    .btn {
+        margin-top: 10px;
+        width: 100%;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        gap: 10px;
+        border: 1px solid #ededef;
+        background-color: white;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+        border: 1px solid #2d79f3;
+        ;
+    }
+</style>
+
+<body>
+    <form class="form" action="insert_data_research.php" method="post">
+        <br><br><br><br>
+        <div class="input-row">
+            <div class="flex-column">
+                <label>DOI: </label>
+            </div>
+            <div class="inputForm">
+                <input id="doi" name="doi" required type="text" class="input" placeholder="Enter your DOI">
+            </div>
+
+            <div class="flex-column">
+                <label>ID: </label>
+            </div>
+            <div class="inputForm">
+                <input type="text" id="id" name="id" required class="input" placeholder="Enter your ID">
+            </div>
+        </div>
+
+        <div class="input-row">
+            <div class="flex-column">
+                <label>RollNo: </label>
+            </div>
+            <div class="inputForm">
+                <input type="text" id="roll_no" name="id" required class="input" placeholder="Enter your Password">
+            </div>
+
+            <div class="flex-column">
+                <label>Title: </label>
+            </div>
+            <div class="inputForm">
+                <input type="text" id="title" name="title" required class="input" placeholder="Enter Title">
+            </div>
+        </div>
+
+
+        <div class="input-row">
+            <div class="flex-column">
+                <label>Journal name: </label>
+            </div>
+            <div class="inputForm">
+                <input type="text" id="journal_name" name="journal_name" required class="input"
+                    placeholder="Enter Journal Name">
+            </div>
+
+            <div class="flex-column">
+                <label>Volume: </label>
+            </div>
+            <div class="inputForm">
+                <input type="text" id="volume" name="volume" required class="input" placeholder="Enter Volume">
+            </div>
+        </div>
+
+
+        <div class="input-row">
+            <div class="flex-column">
+                <label>Series: </label>
+            </div>
+            <div class="inputForm">
+                <input type="text" id="series" name="series" required class="input" placeholder="Enter Series">
+            </div>
+
+            <div class="flex-column">
+                <label>Year: </label>
+            </div>
+            <div class="inputForm">
+                <input type="text" id="year" name="year" required class="input" placeholder="Enter Year">
+            </div>
+        </div>
+
+
+        <div class="input-row">
+            <div class="flex-column">
+                <label>Domain: </label>
+            </div>
+            <div class="inputForm">
+                <input type="text" id="domain" name="domain" required class="input" placeholder="Enter the Domain">
+            </div>
+
+            <div class="flex-column">
+                <label>Activity Type: </label>
+            </div>
+            <div class="inputForm">
+                <input type="text" id="activity_type" name="activity_type" required class="input"
+                    placeholder="Enter the activity type">
+            </div>
+        </div>
+
+
+        <input class="button-submit" type="submit" value="Insert Entry">
+
+    </form>
+</body>
+
+</html>

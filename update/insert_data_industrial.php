@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO your_table_name (Auth_ID, Date, Industry, ID, Roll_No, activity_type)
+    $sql = "INSERT INTO industrial_visit (Auth_ID, Date, Industry, ID, Roll_No, activity_type)
             VALUES ('$auth_id', '$date', '$industry', '$id', '$roll_no', '$activity_type')";
 
     if ($conn->query($sql) === TRUE) {
