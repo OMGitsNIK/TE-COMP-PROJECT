@@ -314,14 +314,13 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <tr>
                                         <th>Academic_year</th>
+                                        <th>Roll_No</th>
                                         <th>Type_of_event</th>
                                         <th>Level_of_event</th>
                                         <th>Date</th>
                                         <th>Organized_by</th>
                                         <th>No_of_students</th>
                                         <th>Prizes_won</th>
-                                        <th>Roll_No</th>
-                                        <th>activity_type</th>
                                     </tr>
                                     <?php
                                     $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
@@ -330,14 +329,13 @@
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr class='data-row'>";
                                         echo "<td>" . $row["Academic_year"] . "</td>";
+                                        echo "<td>" . $row["Roll_No"] . "</td>";
                                         echo "<td>" . $row["Type_of_event"] . "</td>";
                                         echo "<td>" . $row["Level_of_event"] . "</td>";
                                         echo "<td>" . $row["Date"] . "</td>";
                                         echo "<td>" . $row["Organized_by"] . "</td>";
                                         echo "<td>" . $row["No_of_students"] . "</td>";
                                         echo "<td>" . $row["Prizes_won"] . "</td>";
-                                        echo "<td>" . $row["Roll_No"] . "</td>";
-                                        echo "<td>" . $row["activity_type"] . "</td>";
 
                                         echo "</tr>";
                                     }

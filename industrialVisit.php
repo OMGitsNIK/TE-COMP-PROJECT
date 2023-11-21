@@ -309,8 +309,6 @@
                                         <th>Date</th>
                                         <th>Industry</th>
                                         <th>ID</th>
-                                        <th>Roll_No</th>
-                                        <th>activity_type</th>
                                     </tr>
                                     <?php
                                     $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
@@ -322,8 +320,6 @@
                                         echo "<td>" . $row["Date"] . "</td>";
                                         echo "<td>" . $row["Industry"] . "</td>";
                                         echo "<td>" . $row["ID"] . "</td>";
-                                        echo "<td>" . $row["Roll_No"] . "</td>";
-                                        echo "<td>" . $row["activity_type"] . "</td>";
 
                                         echo "</tr>";
                                     }

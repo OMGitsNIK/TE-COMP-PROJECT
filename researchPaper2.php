@@ -313,7 +313,6 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <tr>
                                         <th>DOI</th>
-                                        <th>ID</th>
                                         <th>Roll No</th>
                                         <th>Title</th>
                                         <th>Journal name</th>
@@ -321,7 +320,6 @@
                                         <th>Series</th>
                                         <th>Year</th>
                                         <th>Domain</th>
-                                        <th>Activity Type</th>
                                         <!-- Add more header columns as needed -->
                                     </tr>
                                     <?php
@@ -331,7 +329,6 @@
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr class='data-row'>";
                                         echo "<td>" . $row["DOI"] . "</td>";
-                                        echo "<td>" . $row["ID"] . "</td>";
                                         echo "<td>" . $row["Roll_No"] . "</td>";
                                         echo "<td>" . $row["Title"] . "</td>";
                                         echo "<td>" . $row["Journal name"] . "</td>";
@@ -339,7 +336,6 @@
                                         echo "<td>" . $row["Series"] . "</td>";
                                         echo "<td>" . $row["Year"] . "</td>";
                                         echo "<td>" . $row["Domain"] . "</td>";
-                                        echo "<td>" . $row["activity_type"] . "</td>";
 
                                         echo "</tr>";
                                     }

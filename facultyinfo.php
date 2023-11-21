@@ -304,7 +304,6 @@
                                     <tr>
                                         <th>DOI</th>
                                         <th>ID</th>
-                                        <th>Roll No</th>
                                         <th>Title</th>
                                         <th>Journal name</th>
                                         <th>Volume</th>
@@ -322,7 +321,6 @@
                                         echo "<tr class='data-row'>";
                                         echo "<td>" . $row["DOI"] . "</td>";
                                         echo "<td>" . $row["ID"] . "</td>";
-                                        echo "<td>" . $row["Roll_No"] . "</td>";
                                         echo "<td>" . $row["Title"] . "</td>";
                                         echo "<td>" . $row["Journal name"] . "</td>";
                                         echo "<td>" . $row["Volume"] . "</td>";

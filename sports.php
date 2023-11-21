@@ -285,7 +285,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
+
                     <!-- Page Heading -->
                     <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
@@ -301,38 +301,38 @@
                             <a class="btn btn-primary" href="update/sports.html">Update</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-<table>
-    <tr>
-        <th>Academic Year</th>
-        <th>Type of Sport</th>
-        <th>Level of Sport</th>
-        <th>Date</th>
-        <th>Organized by</th>
-        <th>No of Students</th>
-        <th>Prizes Won</th>
-        <th>Roll No</th>
-        <th>Activity Type</th>
-        <!-- Add more header columns as needed -->
-    </tr>
-    <?php
-    $conn = mysqli_connect("localhost", "root", "", "dmqp_db"); // Replace 'your_database_name' with your actual database name
-    $sql = "SELECT * FROM sports"; // Replace 'your_table_name' with your table name
-    $result = $conn->query($sql);
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr class='data-row'>";
-        echo "<td>" . $row["Academic_year"] . "</td>";
-        echo "<td>" . $row["Type_of_sport"] . "</td>";
-        echo "<td>" . $row["Level_of_sport"] . "</td>";
-        echo "<td>" . $row["Date"] . "</td>";
-        echo "<td>" . $row["Organized_by"] . "</td>";
-        echo "<td>" . $row["No_of_students"] . "</td>";
-        echo "<td>" . $row["Prizes_won"] . "</td>";
-        echo "<td>" . $row["Roll_No"] . "</td>";
-        echo "<td>" . $row["activity_type"] . "</td>";
-        echo "</tr>";
-    }
-    ?>
-</table>
+                                    <table>
+                                        <tr>
+                                            <th>Academic Year</th>
+                                            <th>Roll No</th>
+
+                                            <th>Type of Sport</th>
+                                            <th>Level of Sport</th>
+                                            <th>Date</th>
+                                            <th>Organized by</th>
+                                            <th>No of Students</th>
+                                            <th>Prizes Won</th>
+                                            <!-- Add more header columns as needed -->
+                                        </tr>
+                                        <?php
+                                        $conn = mysqli_connect("localhost", "root", "", "dmqp_db"); // Replace 'your_database_name' with your actual database name
+                                        $sql = "SELECT * FROM sports"; // Replace 'your_table_name' with your table name
+                                        $result = $conn->query($sql);
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<tr class='data-row'>";
+                                            echo "<td>" . $row["Academic_year"] . "</td>";
+                                            echo "<td>" . $row["Roll_No"] . "</td>";
+
+                                            echo "<td>" . $row["Type_of_sport"] . "</td>";
+                                            echo "<td>" . $row["Level_of_sport"] . "</td>";
+                                            echo "<td>" . $row["Date"] . "</td>";
+                                            echo "<td>" . $row["Organized_by"] . "</td>";
+                                            echo "<td>" . $row["No_of_students"] . "</td>";
+                                            echo "<td>" . $row["Prizes_won"] . "</td>";
+                                            echo "</tr>";
+                                        }
+                                        ?>
+                                    </table>
 
 
 

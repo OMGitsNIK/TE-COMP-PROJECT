@@ -311,39 +311,38 @@
                             <a class="btn btn-primary" href="update/sports.html">Update</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    
+
                                     <th>Academic Year</th>
-                                            <th>Type of Sport</th>
-                                            <th>Level of Sport</th>
-                                            <th>Date</th>
-                                            <th>Organized by</th>
-                                            <th>No of Students</th>
-                                            <th>Prizes Won</th>
-                                            <th>Roll No</th>
-                                            <th>Activity Type</th>
+                                    <th>Roll No</th>
+
+                                    <th>Type of Sport</th>
+                                    <th>Level of Sport</th>
+                                    <th>Date</th>
+                                    <th>Organized by</th>
+                                    <th>No of Students</th>
+                                    <th>Prizes Won</th>
                                     <?php
                                     $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
                                     $sql = "SELECT * FROM sports";
                                     $result = $conn->query($sql);
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr class='data-row'>";
-                                         echo "<td>" . $row["Academic_year"] . "</td>";
-                                            echo "<td>" . $row["Type_of_sport"] . "</td>";
-                                            echo "<td>" . $row["Level_of_sport"] . "</td>";
-                                            echo "<td>" . $row["Date"] . "</td>";
-                                            echo "<td>" . $row["Organized_by"] . "</td>";
-                                            echo "<td>" . $row["No_of_students"] . "</td>";
-                                            echo "<td>" . $row["Prizes_won"] . "</td>";
-                                            echo "<td>" . $row["Roll_No"] . "</td>";
-                                            echo "<td>" . $row["activity_type"] . "</td>";
+                                        echo "<td>" . $row["Academic_year"] . "</td>";
+                                        echo "<td>" . $row["Roll_No"] . "</td>";
 
+                                        echo "<td>" . $row["Type_of_sport"] . "</td>";
+                                        echo "<td>" . $row["Level_of_sport"] . "</td>";
+                                        echo "<td>" . $row["Date"] . "</td>";
+                                        echo "<td>" . $row["Organized_by"] . "</td>";
+                                        echo "<td>" . $row["No_of_students"] . "</td>";
+                                        echo "<td>" . $row["Prizes_won"] . "</td>";
                                         echo "</tr>";
                                     }
                                     ?>
 
 
 
-                                
+
 
 
 

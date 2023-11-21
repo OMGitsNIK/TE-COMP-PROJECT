@@ -314,11 +314,9 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <tr>
                                         <th>Auth_ID</th>
+                                        <th>Roll_No</th>
                                         <th>Date</th>
                                         <th>Industry</th>
-                                        <th>ID</th>
-                                        <th>Roll_No</th>
-                                        <th>activity_type</th>
                                     </tr>
                                     <?php
                                     $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
@@ -327,11 +325,9 @@
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr class='data-row'>";
                                         echo "<td>" . $row["Auth_ID"] . "</td>";
+                                        echo "<td>" . $row["Roll_No"] . "</td>";
                                         echo "<td>" . $row["Date"] . "</td>";
                                         echo "<td>" . $row["Industry"] . "</td>";
-                                        echo "<td>" . $row["ID"] . "</td>";
-                                        echo "<td>" . $row["Roll_No"] . "</td>";
-                                        echo "<td>" . $row["activity_type"] . "</td>";
 
                                         echo "</tr>";
                                     }
