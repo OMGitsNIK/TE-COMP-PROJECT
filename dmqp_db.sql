@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2023 at 06:39 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Nov 20, 2023 at 08:42 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `activity` (
   `id` int(11) DEFAULT NULL,
   `Roll_No` int(11) DEFAULT NULL,
   `activity_type` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `activity`
@@ -39,7 +39,9 @@ CREATE TABLE `activity` (
 
 INSERT INTO `activity` (`id`, `Roll_No`, `activity_type`) VALUES
 (100, 50, 'cultural_activities'),
-(200, 51, 'research_paper_publication');
+(204, 54, 'industrial_visit'),
+(200, 51, 'research_paper_publication'),
+(203, 53, 'sports');
 
 -- --------------------------------------------------------
 
@@ -57,14 +59,16 @@ CREATE TABLE `cultural_activities` (
   `Prizes_won` varchar(255) NOT NULL,
   `Roll_No` int(11) NOT NULL,
   `activity_type` varchar(255) DEFAULT 'cultural_activities'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cultural_activities`
 --
 
 INSERT INTO `cultural_activities` (`Academic_year`, `Type_of_event`, `Level_of_event`, `Date`, `Organized_by`, `No_of_students`, `Prizes_won`, `Roll_No`, `activity_type`) VALUES
-('0000-00-00', 'Seminar', 'National', '2022-08-15', 'University XYZ', 100, 'First Prize', 50, 'cultural_activities');
+('0000-00-00', 'Seminar', 'National', '2022-08-15', 'University XYZ', 100, 'First Prize', 50, 'cultural_activities'),
+('0000-00-00', 'Cricket', 'National', '0000-00-00', 'SAG', 11, '1st', 54, 'sports'),
+('0000-00-00', 'Dance', 'District', '0000-00-00', 'GEC', 4, '2nd', 55, 'cultural_activities');
 
 -- --------------------------------------------------------
 
@@ -77,14 +81,14 @@ CREATE TABLE `faculty` (
   `department` varchar(255) DEFAULT NULL,
   `Fname` varchar(255) DEFAULT NULL,
   `Lname` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `faculty`
 --
 
 INSERT INTO `faculty` (`id`, `department`, `Fname`, `Lname`) VALUES
-(100, 'Comp', 'John', 'D'),
+(100, 'Comp', 'John', 'De Souza'),
 (200, 'Comp', 'Sam', 'W'),
 (201, 'Comp', 'Rajesh', 'Kumar'),
 (202, 'Comp', 'Sneha', 'Sharma'),
@@ -96,6 +100,36 @@ INSERT INTO `faculty` (`id`, `department`, `Fname`, `Lname`) VALUES
 (208, 'Comp', 'Anita', 'Yadav'),
 (209, 'Comp', 'Rakesh', 'Mishra'),
 (210, 'Comp', 'Neha', 'Pandey');
+
+--
+-- Triggers `faculty`
+--
+DELIMITER $$
+CREATE TRIGGER `before_faculty_update` BEFORE UPDATE ON `faculty` FOR EACH ROW INSERT INTO faculty_audit (action, id, Fname, Lname, changedate)
+VALUES ('update', OLD.id, OLD.Fname, OLD.Lname, NOW())
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty_audit`
+--
+
+CREATE TABLE `faculty_audit` (
+  `id` int(11) NOT NULL,
+  `Fname` varchar(50) NOT NULL,
+  `Lname` varchar(50) NOT NULL,
+  `changedate` datetime DEFAULT NULL,
+  `action` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `faculty_audit`
+--
+
+INSERT INTO `faculty_audit` (`id`, `Fname`, `Lname`, `changedate`, `action`) VALUES
+(100, 'John', 'D', '2023-11-21 01:05:47', 'update');
 
 -- --------------------------------------------------------
 
@@ -110,7 +144,14 @@ CREATE TABLE `industrial_visit` (
   `ID` int(11) NOT NULL,
   `Roll_No` int(11) NOT NULL,
   `activity_type` varchar(255) DEFAULT 'industrial_visit'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `industrial_visit`
+--
+
+INSERT INTO `industrial_visit` (`Auth_ID`, `Date`, `Industry`, `ID`, `Roll_No`, `activity_type`) VALUES
+(203, '0000-00-00', 'VERNA', 205, 56, 'industrial_visit');
 
 -- --------------------------------------------------------
 
@@ -121,7 +162,7 @@ CREATE TABLE `industrial_visit` (
 CREATE TABLE `login` (
   `username` varchar(50) DEFAULT NULL,
   `password_s` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `login`
@@ -147,7 +188,7 @@ CREATE TABLE `research_paper_publication` (
   `Year` int(11) NOT NULL,
   `Domain` varchar(255) NOT NULL,
   `activity_type` varchar(255) DEFAULT 'research_paper_publication'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `research_paper_publication`
@@ -173,7 +214,7 @@ CREATE TABLE `sports` (
   `Prizes_won` varchar(255) NOT NULL,
   `Roll_No` int(11) NOT NULL,
   `activity_type` varchar(255) DEFAULT 'sports'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -186,14 +227,14 @@ CREATE TABLE `student` (
   `Fname` varchar(255) DEFAULT NULL,
   `Lname` varchar(255) DEFAULT NULL,
   `department` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `student`
 --
 
 INSERT INTO `student` (`Roll_No`, `Fname`, `Lname`, `department`) VALUES
-(50, 'Ved', 'K', 'Comp'),
+(50, 'Ved', 'Kerkar', 'Comp'),
 (51, 'Vedant', 'G', 'Comp'),
 (52, 'John', 'Doe', 'Computer'),
 (53, 'Alice', 'Smith', 'Computer'),
@@ -205,6 +246,36 @@ INSERT INTO `student` (`Roll_No`, `Fname`, `Lname`, `department`) VALUES
 (59, 'Olivia', 'Wilson', 'Computer'),
 (60, 'James', 'Jones', 'Computer'),
 (61, 'Emma', 'Harris', 'Computer');
+
+--
+-- Triggers `student`
+--
+DELIMITER $$
+CREATE TRIGGER `before_student_update` BEFORE UPDATE ON `student` FOR EACH ROW INSERT INTO student_audit (action, Roll_No, Fname, Lname, changedat)
+VALUES ('update', OLD.Roll_No, OLD.Fname, OLD.Lname, NOW())
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_audit`
+--
+
+CREATE TABLE `student_audit` (
+  `Roll_No` int(11) NOT NULL,
+  `Fname` varchar(50) NOT NULL,
+  `Lname` varchar(50) NOT NULL,
+  `changedat` datetime DEFAULT NULL,
+  `action` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_audit`
+--
+
+INSERT INTO `student_audit` (`Roll_No`, `Fname`, `Lname`, `changedat`, `action`) VALUES
+(50, 'Ved', 'K', '2023-11-21 00:48:25', 'update');
 
 --
 -- Indexes for dumped tables
@@ -229,6 +300,12 @@ ALTER TABLE `cultural_activities`
 -- Indexes for table `faculty`
 --
 ALTER TABLE `faculty`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `faculty_audit`
+--
+ALTER TABLE `faculty_audit`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -258,6 +335,12 @@ ALTER TABLE `sports`
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
+  ADD PRIMARY KEY (`Roll_No`);
+
+--
+-- Indexes for table `student_audit`
+--
+ALTER TABLE `student_audit`
   ADD PRIMARY KEY (`Roll_No`);
 
 --
@@ -301,21 +384,6 @@ ALTER TABLE `industrial_visit`
   ADD CONSTRAINT `industrial_visit_ibfk_1` FOREIGN KEY (`Roll_No`) REFERENCES `student` (`Roll_No`),
   ADD CONSTRAINT `industrial_visit_ibfk_2` FOREIGN KEY (`ID`) REFERENCES `faculty` (`id`),
   ADD CONSTRAINT `industrial_visit_ibfk_3` FOREIGN KEY (`activity_type`) REFERENCES `activity` (`activity_type`);
-
---
--- Constraints for table `research_paper_publication`
---
-ALTER TABLE `research_paper_publication`
-  ADD CONSTRAINT `research_paper_publication_ibfk_1` FOREIGN KEY (`Roll_No`) REFERENCES `student` (`Roll_No`),
-  ADD CONSTRAINT `research_paper_publication_ibfk_2` FOREIGN KEY (`ID`) REFERENCES `faculty` (`id`),
-  ADD CONSTRAINT `research_paper_publication_ibfk_3` FOREIGN KEY (`activity_type`) REFERENCES `activity` (`activity_type`);
-
---
--- Constraints for table `sports`
---
-ALTER TABLE `sports`
-  ADD CONSTRAINT `sports_ibfk_1` FOREIGN KEY (`Roll_No`) REFERENCES `student` (`Roll_No`),
-  ADD CONSTRAINT `sports_ibfk_2` FOREIGN KEY (`activity_type`) REFERENCES `activity` (`activity_type`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
