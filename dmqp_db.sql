@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2023 at 08:42 PM
+-- Generation Time: Nov 21, 2023 at 10:27 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -179,24 +179,32 @@ INSERT INTO `login` (`username`, `password_s`) VALUES
 
 CREATE TABLE `research_paper_publication` (
   `DOI` date NOT NULL,
-  `ID` int(11) NOT NULL,
-  `Roll_No` int(11) NOT NULL,
   `Title` text NOT NULL,
   `Journal name` varchar(255) NOT NULL,
   `Volume` int(11) NOT NULL,
   `Series` varchar(255) NOT NULL,
   `Year` int(11) NOT NULL,
   `Domain` varchar(255) NOT NULL,
-  `activity_type` varchar(255) DEFAULT 'research_paper_publication'
+  `activity_type` varchar(255) DEFAULT 'research_paper_publication',
+  `Roll_No` int(11) DEFAULT NULL,
+  `ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `research_paper_publication`
 --
 
-INSERT INTO `research_paper_publication` (`DOI`, `ID`, `Roll_No`, `Title`, `Journal name`, `Volume`, `Series`, `Year`, `Domain`, `activity_type`) VALUES
-('0000-00-00', 21, 32, 'teeth', 'insp', 2, 'three', 2023, 'ny', 'research_paper_publication'),
-('0000-00-00', 200, 51, 'ddd', 'www', 3, 'ggg', 2023, 'rrr', 'research_paper_publication');
+INSERT INTO `research_paper_publication` (`DOI`, `Title`, `Journal name`, `Volume`, `Series`, `Year`, `Domain`, `activity_type`, `Roll_No`, `ID`) VALUES
+('2023-01-01', 'Paper 1', 'Journal A', 10, 'Series X', 2023, 'Science', 'research_paper_publication', 50, 100),
+('2023-02-01', 'Paper 2', 'Journal B', 15, 'Series Y', 2023, 'Technology', 'research_paper_publication', 51, 200),
+('2023-03-01', 'Paper 3', 'Journal C', 20, 'Series Z', 2023, 'Engineering', 'research_paper_publication', 52, 201),
+('2023-04-01', 'Paper 4', 'Journal A', 12, 'Series X', 2023, 'Science', 'research_paper_publication', 53, 202),
+('2023-05-01', 'Paper 5', 'Journal B', 18, 'Series Y', 2023, 'Technology', 'research_paper_publication', 54, 203),
+('2023-06-01', 'Paper 6', 'Journal C', 25, 'Series Z', 2023, 'Engineering', 'research_paper_publication', 55, 204),
+('2023-07-01', 'Paper 7', 'Journal A', 14, 'Series X', 2023, 'Science', 'research_paper_publication', 56, 205),
+('2023-08-01', 'Paper 8', 'Journal B', 22, 'Series Y', 2023, 'Technology', 'research_paper_publication', 57, 206),
+('2023-09-01', 'Paper 9', 'Journal C', 28, 'Series Z', 2023, 'Engineering', 'research_paper_publication', 58, 207),
+('2023-10-01', 'Paper 10', 'Journal A', 16, 'Series X', 2023, 'Science', 'research_paper_publication', 59, 208);
 
 -- --------------------------------------------------------
 
@@ -277,6 +285,26 @@ CREATE TABLE `student_audit` (
 INSERT INTO `student_audit` (`Roll_No`, `Fname`, `Lname`, `changedat`, `action`) VALUES
 (50, 'Ved', 'K', '2023-11-21 00:48:25', 'update');
 
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `student_dept`
+-- (See below for the actual view)
+--
+CREATE TABLE `student_dept` (
+`Roll_No` int(11)
+,`department` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `student_dept`
+--
+DROP TABLE IF EXISTS `student_dept`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `student_dept`  AS SELECT `student`.`Roll_No` AS `Roll_No`, `student`.`department` AS `department` FROM `student``student`  ;
+
 --
 -- Indexes for dumped tables
 --
@@ -320,9 +348,9 @@ ALTER TABLE `industrial_visit`
 -- Indexes for table `research_paper_publication`
 --
 ALTER TABLE `research_paper_publication`
+  ADD KEY `activity_type` (`activity_type`),
   ADD KEY `Roll_No` (`Roll_No`),
-  ADD KEY `ID` (`ID`),
-  ADD KEY `activity_type` (`activity_type`);
+  ADD KEY `ID` (`ID`);
 
 --
 -- Indexes for table `sports`
@@ -384,6 +412,21 @@ ALTER TABLE `industrial_visit`
   ADD CONSTRAINT `industrial_visit_ibfk_1` FOREIGN KEY (`Roll_No`) REFERENCES `student` (`Roll_No`),
   ADD CONSTRAINT `industrial_visit_ibfk_2` FOREIGN KEY (`ID`) REFERENCES `faculty` (`id`),
   ADD CONSTRAINT `industrial_visit_ibfk_3` FOREIGN KEY (`activity_type`) REFERENCES `activity` (`activity_type`);
+
+--
+-- Constraints for table `research_paper_publication`
+--
+ALTER TABLE `research_paper_publication`
+  ADD CONSTRAINT `research_paper_publication_ibfk_1` FOREIGN KEY (`activity_type`) REFERENCES `activity` (`activity_type`),
+  ADD CONSTRAINT `research_paper_publication_ibfk_2` FOREIGN KEY (`Roll_No`) REFERENCES `student` (`Roll_No`),
+  ADD CONSTRAINT `research_paper_publication_ibfk_3` FOREIGN KEY (`ID`) REFERENCES `faculty` (`id`);
+
+--
+-- Constraints for table `sports`
+--
+ALTER TABLE `sports`
+  ADD CONSTRAINT `sports_ibfk_1` FOREIGN KEY (`Roll_No`) REFERENCES `student` (`Roll_No`),
+  ADD CONSTRAINT `sports_ibfk_2` FOREIGN KEY (`activity_type`) REFERENCES `activity` (`activity_type`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
