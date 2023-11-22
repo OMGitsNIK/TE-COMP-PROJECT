@@ -109,6 +109,15 @@
             transform: rotate(360deg);
         }
     }
+
+    .footer {
+    background-color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
     </style>
 </head>
 
@@ -252,9 +261,9 @@
 
     </div>
     <!-- End of Content Wrapper -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
+     <footer class="footer">
+        <div class="container">
+            <div class="copyright">
                 <span>Copyright &copy; Faculty-Student Management 2023</span>
             </div>
         </div>
