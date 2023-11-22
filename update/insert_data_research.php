@@ -2,7 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $doi = $_POST["doi"];
     $id = $_POST["id"];
-    $roll_no = $_POST["roll_no"];
+    $roll_no = $_POST["Roll_no"];
     $title = $_POST["title"];
     $journal_name = $_POST["journal_name"];
     $volume = $_POST["volume"];

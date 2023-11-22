@@ -1,8 +1,8 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $academic_year = $_POST["Academic_year"];
-    $type_of_event = $_POST["Type_of_event"];
-    $level_of_event = $_POST["Level_of_event"];
+    $type_of_sport = $_POST["Type_of_sport"];
+    $level_of_sport = $_POST["Level_of_sport"];
     $date = $_POST["Date"];
     $organized_by = $_POST["Organized_by"];
     $no_of_students = $_POST["No_of_students"];
@@ -11,9 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $activity_type = $_POST["activity_type"];
 
     $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
-    $sql = "INSERT INTO sports (Academic_year, Type_of_event, Level_of_event, Date, Organized_by, No_of_students, Prizes_won, Roll_No, activity_type)
-            VALUES ('$academic_year', '$type_of_event', '$level_of_event', '$date', '$organized_by', '$no_of_students', '$prizes_won', '$roll_no', '$activity_type')";
-    
+    $sql = "INSERT INTO sports (Academic_year, Type_of_sport, Level_of_sport, Date, Organized_by, No_of_students, Prizes_won, Roll_No, activity_type)
+            VALUES ('$academic_year', '$type_of_sport', '$level_of_sport', '$date', '$organized_by', '$no_of_students', '$prizes_won', '$roll_no', '$activity_type')";
+
     if ($conn->query($sql) === TRUE) {
         echo "New entry added successfully!";
     } else {
