@@ -320,39 +320,44 @@
                             <a class="btn btn-primary" href="update/research.html">Update</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <tr>
-                                        <th>DOI</th>
-                                        <th>Roll No</th>
-                                        <th>Title</th>
-                                        <th>Journal name</th>
-                                        <th>Volume</th>
-                                        <th>Series</th>
-                                        <th>Year</th>
-                                        <th>Domain</th>
-                                        <!-- Add more header columns as needed -->
-                                    </tr>
-                                    <?php
-                                    $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
-                                    $sql = "SELECT * FROM research_paper_publication";
-                                    $result = $conn->query($sql);
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo "<tr class='data-row'>";
-                                        echo "<td>" . $row["DOI"] . "</td>";
-                                        echo "<td>" . $row["Roll_No"] . "</td>";
-                                        echo "<td>" . $row["Title"] . "</td>";
-                                        echo "<td>" . $row["Journal name"] . "</td>";
-                                        echo "<td>" . $row["Volume"] . "</td>";
-                                        echo "<td>" . $row["Series"] . "</td>";
-                                        echo "<td>" . $row["Year"] . "</td>";
-                                        echo "<td>" . $row["Domain"] . "</td>";
-
-                                        echo "</tr>";
-                                    }
-                                    ?>
-
-
-
+                                    <thead>
+                                        <tr>
+                                            <th>DOI</th>
+                                            <th>Roll_No</th>
+                                            <th>Student Name</th>
+                                            <th>Title</th>
+                                            <th>Journal Name</th>
+                                            <th>Volume</th>
+                                            <th>Series</th>
+                                            <th>Year</th>
+                                            <th>Domain</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
+                                        $sql = "SELECT research_paper_publication.*, student.Fname AS Student_Fname, student.Lname AS Student_Lname, faculty.Fname AS Faculty_Fname, faculty.Lname AS Faculty_Lname
+                FROM research_paper_publication
+                LEFT JOIN student ON research_paper_publication.Roll_No = student.Roll_No
+                LEFT JOIN faculty ON research_paper_publication.ID = faculty.ID";
+                                        $result = $conn->query($sql);
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<tr class='data-row'>";
+                                            echo "<td>" . $row["DOI"] . "</td>";
+                                            echo "<td>" . $row["Roll_No"] . "</td>";
+                                            echo "<td>" . $row["Student_Fname"] . " " . $row["Student_Lname"] . "</td>";
+                                            echo "<td>" . $row["Title"] . "</td>";
+                                            echo "<td>" . $row["Journal name"] . "</td>";
+                                            echo "<td>" . $row["Volume"] . "</td>";
+                                            echo "<td>" . $row["Series"] . "</td>";
+                                            echo "<td>" . $row["Year"] . "</td>";
+                                            echo "<td>" . $row["Domain"] . "</td>";
+                                            echo "</tr>";
+                                        }
+                                        ?>
+                                    </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>
@@ -367,7 +372,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Faculty-Student Management 2023</span>
+                        <span>Copyright &copy; Faculty-Student Management 2023</span>
                     </div>
                 </div>
             </footer>

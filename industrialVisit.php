@@ -313,31 +313,37 @@
                             <a class="btn btn-primary" href="update/industrial.html">Update</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <tr>
-                                        <th>Auth_ID</th>
-                                        <th>Date</th>
-                                        <th>Industry</th>
-                                        <th>ID</th>
-                                    </tr>
-                                    <?php
-                                    $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
-                                    $sql = "SELECT * FROM industrial_visit";
-                                    $result = $conn->query($sql);
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo "<tr class='data-row'>";
-                                        echo "<td>" . $row["Auth_ID"] . "</td>";
-                                        echo "<td>" . $row["Date"] . "</td>";
-                                        echo "<td>" . $row["Industry"] . "</td>";
-                                        echo "<td>" . $row["ID"] . "</td>";
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>ID</th>
+                                            <th>Faculty Name</th>
 
-                                        echo "</tr>";
-                                    }
-                                    ?>
-
-
-
-
+                                            <th>Industry</th>
+                                            <th>Activity Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
+                                        $sql = "SELECT industrial_visit.*, student.Fname AS Student_Fname, student.Lname AS Student_Lname, faculty.Fname AS Faculty_Fname, faculty.Lname AS Faculty_Lname
+                FROM industrial_visit
+                LEFT JOIN student ON industrial_visit.Roll_No = student.Roll_No
+                LEFT JOIN faculty ON industrial_visit.ID = faculty.ID";
+                                        $result = $conn->query($sql);
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<tr class='data-row'>";
+                                            echo "<td>" . $row["Date"] . "</td>";
+                                            echo "<td>" . $row["ID"] . "</td>";
+                                            echo "<td>" . $row["Faculty_Fname"] . " " . $row["Faculty_Lname"] . "</td>";
+                                            echo "<td>" . $row["Industry"] . "</td>";
+                                            echo "<td>" . $row["activity_type"] . "</td>";
+                                            echo "</tr>";
+                                        }
+                                        ?>
+                                    </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>
@@ -352,7 +358,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Faculty-Student Management 2023</span>
+                        <span>Copyright &copy; Faculty-Student Management 2023</span>
                     </div>
                 </div>
             </footer>
