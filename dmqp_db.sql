@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2023 at 07:27 AM
+-- Generation Time: Nov 22, 2023 at 07:36 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -316,6 +316,26 @@ CREATE TABLE `student_audit` (
 
 INSERT INTO `student_audit` (`Roll_No`, `Fname`, `Lname`, `changedat`, `action`) VALUES
 (50, 'Ved', 'K', '2023-11-21 00:48:25', 'update');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `student_dept`
+-- (See below for the actual view)
+--
+CREATE TABLE `student_dept` (
+`Roll_No` int(11)
+,`department` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `student_dept`
+--
+DROP TABLE IF EXISTS `student_dept`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `student_dept`  AS SELECT `student`.`Roll_No` AS `Roll_No`, `student`.`department` AS `department` FROM `student``student`  ;
 
 --
 -- Indexes for dumped tables
