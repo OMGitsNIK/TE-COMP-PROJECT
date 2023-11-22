@@ -20,95 +20,95 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <style>
-        .e-card {
-            margin-left: 120px;
-            background: transparent;
-            box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
-            position: relative;
-            width: 500px;
-            height: 330px;
-            border-radius: 16px;
-            overflow: hidden;
-            display: inline-block;
+    .e-card {
+        margin-left: 120px;
+        background: transparent;
+        box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
+        position: relative;
+        width: 500px;
+        height: 330px;
+        border-radius: 16px;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .wave {
+        position: absolute;
+        width: 540px;
+        height: 700px;
+        opacity: 0.6;
+        left: 0;
+        top: 0;
+        margin-left: -50%;
+        margin-top: -70%;
+        background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb);
+    }
+
+    .icon {
+        width: 3em;
+        margin-top: -1em;
+        padding-bottom: 1em;
+    }
+
+    .infotop {
+        text-align: center;
+        font-size: 20px;
+        position: absolute;
+        top: 5.6em;
+        left: 0;
+        right: 0;
+        color: rgb(255, 255, 255);
+        font-weight: 600;
+    }
+
+    .name {
+        font-size: 14px;
+        font-weight: 100;
+        position: relative;
+        top: 1em;
+        text-transform: lowercase;
+    }
+
+    .wave:nth-child(2),
+    .wave:nth-child(3) {
+        top: 210px;
+    }
+
+    .playing .wave {
+        border-radius: 40%;
+        animation: wave 3000ms infinite linear;
+    }
+
+    .wave {
+        border-radius: 40%;
+        animation: wave 55s infinite linear;
+    }
+
+    .playing .wave:nth-child(2) {
+        animation-duration: 4000ms;
+    }
+
+    .wave:nth-child(2) {
+        animation-duration: 50s;
+    }
+
+    .playing .wave:nth-child(3) {
+        animation-duration: 5000ms;
+    }
+
+    .wave:nth-child(3) {
+        animation-duration: 45s;
+    }
+
+    @keyframes wave {
+        0% {
+            transform: rotate(0deg);
         }
 
-        .wave {
-            position: absolute;
-            width: 540px;
-            height: 700px;
-            opacity: 0.6;
-            left: 0;
-            top: 0;
-            margin-left: -50%;
-            margin-top: -70%;
-            background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb);
+        100% {
+            transform: rotate(360deg);
         }
-
-        .icon {
-            width: 3em;
-            margin-top: -1em;
-            padding-bottom: 1em;
-        }
-
-        .infotop {
-            text-align: center;
-            font-size: 20px;
-            position: absolute;
-            top: 5.6em;
-            left: 0;
-            right: 0;
-            color: rgb(255, 255, 255);
-            font-weight: 600;
-        }
-
-        .name {
-            font-size: 14px;
-            font-weight: 100;
-            position: relative;
-            top: 1em;
-            text-transform: lowercase;
-        }
-
-        .wave:nth-child(2),
-        .wave:nth-child(3) {
-            top: 210px;
-        }
-
-        .playing .wave {
-            border-radius: 40%;
-            animation: wave 3000ms infinite linear;
-        }
-
-        .wave {
-            border-radius: 40%;
-            animation: wave 55s infinite linear;
-        }
-
-        .playing .wave:nth-child(2) {
-            animation-duration: 4000ms;
-        }
-
-        .wave:nth-child(2) {
-            animation-duration: 50s;
-        }
-
-        .playing .wave:nth-child(3) {
-            animation-duration: 5000ms;
-        }
-
-        .wave:nth-child(3) {
-            animation-duration: 45s;
-        }
-
-        @keyframes wave {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+    }
     </style>
 </head>
 
@@ -133,15 +133,24 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                       
-                           
+
+
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">VED KERKAR</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    <?php
+                                    $conn = mysqli_connect("localhost", "root", "", "dmqp_db");
+                                    $sql = "SELECT * FROM login";
+                                    $result = $conn->query($sql);
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo $row['username']; 
+                                    }
+                                    ?>
+                                </span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -246,10 +255,10 @@
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2021</span>
+                <span>Copyright &copy; Faculty-Student Management 2023</span>
             </div>
         </div>
-    </footer>s
+    </footer>
     </div>
     <!-- End of Page Wrapper -->
 

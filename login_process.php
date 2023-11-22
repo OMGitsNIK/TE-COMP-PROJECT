@@ -26,8 +26,8 @@ $result = mysqli_query($connection, $query);
 if ($result) {
     // Check if there is a match in the database
     if (mysqli_num_rows($result) == 1) {
-        // Redirect to index.html on successful login
-        header("Location: index.html");
+        // Redirect to index.php on successful login
+        header("Location: index.php");
         exit();
     } else {
         echo "Invalid username or password.";

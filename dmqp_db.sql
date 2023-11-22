@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 10:27 AM
+-- Generation Time: Nov 22, 2023 at 07:27 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -50,7 +50,7 @@ INSERT INTO `activity` (`id`, `Roll_No`, `activity_type`) VALUES
 --
 
 CREATE TABLE `cultural_activities` (
-  `Academic_year` date NOT NULL,
+  `Academic_year` varchar(50) DEFAULT NULL,
   `Type_of_event` varchar(255) NOT NULL,
   `Level_of_event` varchar(255) NOT NULL,
   `Date` date NOT NULL,
@@ -66,9 +66,16 @@ CREATE TABLE `cultural_activities` (
 --
 
 INSERT INTO `cultural_activities` (`Academic_year`, `Type_of_event`, `Level_of_event`, `Date`, `Organized_by`, `No_of_students`, `Prizes_won`, `Roll_No`, `activity_type`) VALUES
-('0000-00-00', 'Seminar', 'National', '2022-08-15', 'University XYZ', 100, 'First Prize', 50, 'cultural_activities'),
-('0000-00-00', 'Cricket', 'National', '0000-00-00', 'SAG', 11, '1st', 54, 'sports'),
-('0000-00-00', 'Dance', 'District', '0000-00-00', 'GEC', 4, '2nd', 55, 'cultural_activities');
+('2022-2023', 'Dance Competition', 'Inter-School', '2022-09-15', 'School Dance Club', 50, '1st Place Trophy', 52, 'cultural_activities'),
+('2022-2023', 'Music Fest', 'College', '2022-11-03', 'Music Department', 80, 'Best Vocalist Award', 53, 'cultural_activities'),
+('2022-2023', 'Literary Symposium', 'University', '2022-10-22', 'English Society', 60, 'Outstanding Speaker', 54, 'cultural_activities'),
+('2022-2023', 'Art Exhibition', 'School', '2022-12-05', 'Fine Arts Club', 45, 'Excellence in Painting', 55, 'cultural_activities'),
+('2022-2023', 'Drama Festival', 'District', '2023-01-18', 'Drama Society', 70, 'Best Actor', 61, 'cultural_activities'),
+('2022-2023', 'Quiz Competition', 'Inter-College', '2022-11-28', 'Quiz Club', 55, '2nd Place Certificate', 56, 'cultural_activities'),
+('2022-2023', 'Traditional Dance Show', 'Cultural Fair', '2022-10-07', 'Cultural Committee', 40, 'Cultural Diversity Award', 57, 'cultural_activities'),
+('2022-2023', 'Photography Contest', 'National', '2022-12-20', 'Photography Club', 25, 'Honorable Mention', 58, 'cultural_activities'),
+('2022-2023', 'Debate Championship', 'State', '2023-02-08', 'Debate Society', 50, 'Best Debater', 59, 'cultural_activities'),
+('2022-2023', 'Film Screening Event', 'College', '2022-11-15', 'Film Club', 30, 'Audience Choice Award', 60, 'cultural_activities');
 
 -- --------------------------------------------------------
 
@@ -151,7 +158,16 @@ CREATE TABLE `industrial_visit` (
 --
 
 INSERT INTO `industrial_visit` (`Auth_ID`, `Date`, `Industry`, `ID`, `Roll_No`, `activity_type`) VALUES
-(203, '0000-00-00', 'VERNA', 205, 56, 'industrial_visit');
+(1, '2022-08-10', 'Manufacturing Company A', 200, 51, 'industrial_visit'),
+(2, '2022-09-05', 'Tech Startup B', 201, 52, 'industrial_visit'),
+(3, '2022-10-20', 'Energy Plant C', 202, 53, 'industrial_visit'),
+(4, '2022-11-15', 'Biotech Lab D', 203, 54, 'industrial_visit'),
+(5, '2022-12-08', 'Automotive Plant E', 204, 55, 'industrial_visit'),
+(6, '2023-01-25', 'Aerospace Facility F', 205, 56, 'industrial_visit'),
+(7, '2023-02-18', 'Renewable Energy G', 206, 57, 'industrial_visit'),
+(8, '2023-03-10', 'Food Processing H', 207, 58, 'industrial_visit'),
+(9, '2023-04-05', 'Chemical Manufacturing I', 208, 59, 'industrial_visit'),
+(10, '2023-05-22', 'Tech Research Center J', 209, 60, 'industrial_visit');
 
 -- --------------------------------------------------------
 
@@ -213,9 +229,9 @@ INSERT INTO `research_paper_publication` (`DOI`, `Title`, `Journal name`, `Volum
 --
 
 CREATE TABLE `sports` (
-  `Academic_year` date NOT NULL,
-  `Type_of_sport` int(11) NOT NULL,
-  `Level_of_sport` int(11) NOT NULL,
+  `Academic_year` varchar(50) DEFAULT NULL,
+  `Type_of_sport` varchar(30) DEFAULT NULL,
+  `Level_of_sport` varchar(30) DEFAULT NULL,
   `Date` date NOT NULL,
   `Organized_by` varchar(255) NOT NULL,
   `No_of_students` int(11) NOT NULL,
@@ -223,6 +239,22 @@ CREATE TABLE `sports` (
   `Roll_No` int(11) NOT NULL,
   `activity_type` varchar(255) DEFAULT 'sports'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sports`
+--
+
+INSERT INTO `sports` (`Academic_year`, `Type_of_sport`, `Level_of_sport`, `Date`, `Organized_by`, `No_of_students`, `Prizes_won`, `Roll_No`, `activity_type`) VALUES
+('2022-2023', 'Football', 'Inter-School', '2022-09-10', 'School Sports Club', 60, 'Champion Trophy', 50, 'sports'),
+('2022-2023', 'Basketball', 'College', '2022-11-05', 'College Sports Department', 40, '1st Place Medal', 51, 'sports'),
+('2022-2023', 'Swimming', 'University', '2022-10-18', 'National Swimming Association', 30, 'Gold Medal', 52, 'sports'),
+('2022-2023', 'Cricket', 'School', '2022-12-02', 'School Cricket Association', 50, 'Best Batsman Award', 53, 'sports'),
+('2022-2023', 'Tennis', 'District', '2023-01-20', 'District Tennis Club', 25, 'Runner-up Trophy', 54, 'sports'),
+('2022-2023', 'Athletics', 'Inter-College', '2022-11-25', 'College Athletics Club', 70, 'Most Valuable Player Award', 55, 'sports'),
+('2022-2023', 'Volleyball', 'Cultural Fair', '2022-10-12', 'Cultural and Sports Committee', 35, 'Fair Play Award', 56, 'sports'),
+('2022-2023', 'Badminton', 'National', '2022-12-28', 'National Badminton Association', 55, 'Silver Medal', 57, 'sports'),
+('2022-2023', 'Hockey', 'State', '2023-02-15', 'State Hockey Federation', 45, 'Best Goalkeeper Award', 58, 'sports'),
+('2022-2023', 'Table Tennis', 'College', '2022-11-08', 'College Table Tennis Club', 20, '3rd Place Certificate', 59, 'sports');
 
 -- --------------------------------------------------------
 
@@ -284,26 +316,6 @@ CREATE TABLE `student_audit` (
 
 INSERT INTO `student_audit` (`Roll_No`, `Fname`, `Lname`, `changedat`, `action`) VALUES
 (50, 'Ved', 'K', '2023-11-21 00:48:25', 'update');
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `student_dept`
--- (See below for the actual view)
---
-CREATE TABLE `student_dept` (
-`Roll_No` int(11)
-,`department` varchar(255)
-);
-
--- --------------------------------------------------------
-
---
--- Structure for view `student_dept`
---
-DROP TABLE IF EXISTS `student_dept`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `student_dept`  AS SELECT `student`.`Roll_No` AS `Roll_No`, `student`.`department` AS `department` FROM `student``student`  ;
 
 --
 -- Indexes for dumped tables
