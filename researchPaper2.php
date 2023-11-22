@@ -55,7 +55,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item  ">
-                <a class="nav-link" href="industrialVisit.php">
+                <a class="nav-link" href="studentsinfo.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Sports</span></a>
             </li>
